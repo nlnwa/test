@@ -12,7 +12,7 @@ env:
     - KUBECONFIG=$HOME/.kube/config
     - MINIKUBE_VERSION=v1.2.0
     - KUBERNETES_VERSION=v1.15.0
-    - HOME=$HOME/.linkerd2/bin
+    - PATH=$PATH:$HOME/.linkerd2/bin
 
 before_script:
   # Download kubectl, which is a requirement for using minikube.
