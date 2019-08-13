@@ -21,6 +21,11 @@ before_script:
   - curl -Lo minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
   - mkdir -p $HOME/.kube $HOME/.minikube
   - touch $KUBECONFIG
+  # Download helm
+  - wget -q https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-linux-amd64.tar.gz -O helm.tar.gz \
+      && tar -xvzf helm.tar.gz -C /tmp --strip-components=1 \
+      && chmod +x /tmp/helm \
+      && sudo mv /tmp/helm /usr/local/bin
   # Download linkerd
   - curl https://run.linkerd.io/install | sh
   - sudo minikube start --vm-driver=none --kubernetes-version=${KUBERNETES_VERSION}
